@@ -99,7 +99,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget> with Ticker
   void initState() {
     geocode = Geocoding(apiKey: widget.apiKey, language: widget.language);
     _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
-    _containerHeight = Tween<double>(begin: 55, end: 364).animate(
+    _containerHeight = Tween<double>(begin: 35, end: 364).animate(
       CurvedAnimation(
         curve: Interval(0.0, 0.5, curve: Curves.easeInOut),
         parent: _animationController,
@@ -133,7 +133,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget> with Ticker
 
   @override
   Widget build(BuildContext context) => Container(
-        width: MediaQuery.of(context).size.width * 0.9,
+        width: MediaQuery.of(context).size.width * 0.95,
         child: _searchContainer(
           child: _searchInput(context),
         ),
@@ -152,7 +152,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget> with Ticker
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 4),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5.0, top: 0),
                   child: child,
                 ),
                 if (_placePredictions.length > 0)
@@ -184,7 +184,8 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget> with Ticker
               autofocus: false,
               focusNode: _fn,
               style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.04,
+                fontFamily: 'Comfortaa',
+                fontSize: 12,
                 color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
               ),
             ),
@@ -219,7 +220,8 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget> with Ticker
         title: Text(
           place.length < 45 ? "$place" : "${place.replaceRange(45, place.length, "")} ...",
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * 0.04,
+            fontFamily: 'Comfortaa',
+            fontSize: 12,
             color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
           ),
           maxLines: 1,
@@ -241,6 +243,8 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget> with Ticker
       border: InputBorder.none,
       contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
       hintStyle: TextStyle(
+        fontFamily: 'Comfortaa',
+        fontSize: 12,
         color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
       ),
     );
